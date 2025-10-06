@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "bAeHpX0iCTg=",
+  "dgSpecHash": "OEEq8wD5h4I=",
   "success": true,
-  "projectFilePath": "/mnt/g/REPO/PRG-2025_26/uloha-0-zaklady/env/env.csproj",
+  "projectFilePath": "/mnt/g/REPO/PRG-2025_26/uloha-0-zaklady/env.csproj",
   "expectedPackageFiles": [
     "/root/.nuget/packages/microsoft.aspnetcore.app.ref/9.0.9/microsoft.aspnetcore.app.ref.9.0.9.nupkg.sha512"
   ],
