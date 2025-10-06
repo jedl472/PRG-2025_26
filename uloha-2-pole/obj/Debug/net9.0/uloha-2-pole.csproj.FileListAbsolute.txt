@@ -1,0 +1,15 @@
+/mnt/g/REPO/PRG-2025_26/uloha-2-pole/bin/Debug/net9.0/uloha-2-pole
+/mnt/g/REPO/PRG-2025_26/uloha-2-pole/bin/Debug/net9.0/uloha-2-pole.deps.json
+/mnt/g/REPO/PRG-2025_26/uloha-2-pole/bin/Debug/net9.0/uloha-2-pole.runtimeconfig.json
+/mnt/g/REPO/PRG-2025_26/uloha-2-pole/bin/Debug/net9.0/uloha-2-pole.dll
+/mnt/g/REPO/PRG-2025_26/uloha-2-pole/bin/Debug/net9.0/uloha-2-pole.pdb
+/mnt/g/REPO/PRG-2025_26/uloha-2-pole/obj/Debug/net9.0/uloha-2-pole.GeneratedMSBuildEditorConfig.editorconfig
+/mnt/g/REPO/PRG-2025_26/uloha-2-pole/obj/Debug/net9.0/uloha-2-pole.AssemblyInfoInputs.cache
+/mnt/g/REPO/PRG-2025_26/uloha-2-pole/obj/Debug/net9.0/uloha-2-pole.AssemblyInfo.cs
+/mnt/g/REPO/PRG-2025_26/uloha-2-pole/obj/Debug/net9.0/uloha-2-pole.csproj.CoreCompileInputs.cache
+/mnt/g/REPO/PRG-2025_26/uloha-2-pole/obj/Debug/net9.0/uloha-2-pole.sourcelink.json
+/mnt/g/REPO/PRG-2025_26/uloha-2-pole/obj/Debug/net9.0/uloha-2-pole.dll
+/mnt/g/REPO/PRG-2025_26/uloha-2-pole/obj/Debug/net9.0/refint/uloha-2-pole.dll
+/mnt/g/REPO/PRG-2025_26/uloha-2-pole/obj/Debug/net9.0/uloha-2-pole.pdb
+/mnt/g/REPO/PRG-2025_26/uloha-2-pole/obj/Debug/net9.0/uloha-2-pole.genruntimeconfig.cache
+/mnt/g/REPO/PRG-2025_26/uloha-2-pole/obj/Debug/net9.0/ref/uloha-2-pole.dll

@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "cpCedcBSmrs=",
+  "success": true,
+  "projectFilePath": "/mnt/g/REPO/PRG-2025_26/uloha-2-pole/uloha-2-pole.csproj",
+  "expectedPackageFiles": [
+    "/root/.nuget/packages/microsoft.aspnetcore.app.ref/9.0.9/microsoft.aspnetcore.app.ref.9.0.9.nupkg.sha512"
+  ],
+  "logs": []
+}
