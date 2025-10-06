@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/mnt/c/Users/Tom.YOGARICHI/Documents/repo/PRG-2025_26/uloha-0-zaklady/wks/wks.csproj",
-      "projectName": "wks",
-      "projectPath": "/mnt/c/Users/Tom.YOGARICHI/Documents/repo/PRG-2025_26/uloha-0-zaklady/wks/wks.csproj",
+      "projectUniqueName": "/mnt/g/REPO/PRG-2025_26/uloha-0-zaklady/env/env.csproj",
+      "projectName": "env",
+      "projectPath": "/mnt/g/REPO/PRG-2025_26/uloha-0-zaklady/env/env.csproj",
       "packagesPath": "/root/.nuget/packages/",
-      "outputPath": "/mnt/c/Users/Tom.YOGARICHI/Documents/repo/PRG-2025_26/uloha-0-zaklady/wks/obj/",
+      "outputPath": "/mnt/g/REPO/PRG-2025_26/uloha-0-zaklady/env/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "/root/.nuget/NuGet/NuGet.Config"
@@ -63,7 +63,7 @@
         "downloadDependencies": [
           {
             "name": "Microsoft.AspNetCore.App.Ref",
-            "version": "[9.0.8, 9.0.8]"
+            "version": "[9.0.9, 9.0.9]"
           }
         ],
         "frameworkReferences": {
@@ -71,7 +71,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/9.0.109/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/9.0.110/PortableRuntimeIdentifierGraph.json"
       }
     }
   }
