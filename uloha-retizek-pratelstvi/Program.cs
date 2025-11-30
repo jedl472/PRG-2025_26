@@ -1,73 +1,147 @@
 ﻿using System;
-using System.Numerics;
-using System.ComponentModel;
 
-namespace retizek_pratelstvi
-{
-    internal class Program
-    {
-        class SimpleGraph 
-        {
-            public int numberOfNodes;
-            public List<List<int>> edges;
+namespace graph_utility {
+    internal class Program {
+        class Node {
+            public int value;
+            public int uloha_db;
+            public int distanceFromOrigin;
+
+            public Node? predecessor;
         }
 
-        static T consoleReadType<T> (string query) {
-            Console.Write(query);
+        class Graph {
+            public Dictionary<int, List<int>> edges = new Dictionary<int, List<int>>(); // list of node values connected by 
+            public List<Node> adjacement_nodes(Node origin_node) { 
+                List<Node> out_list = new List<Node>();
 
-            string? str = Console.ReadLine();
-
-            TypeConverter converter = TypeDescriptor.GetConverter(typeof(T));
-
-            while (converter.IsValid(str) == false | str == null)
-            {
-                Console.Write("Neplatny vstup. " + query);
-                str = Console.ReadLine();
-            }
-
-            return (T)converter.ConvertFromString(str);
-        }
-
-        static void loadInput(out uint numberOfUsers, out List<(uint, uint)> interconnections) {
-            interconnections = new List<(uint, uint)>(); 
-            
-            numberOfUsers = consoleReadType<uint> ("");
-            
-            string[] tuples = consoleReadType<string>("").Split(' ');
-
-            foreach (string tuple in tuples) 
-            {
-                string[] splitted = tuple.Split('-');
-
-                interconnections.Add((uint.Parse(splitted[0]), uint.Parse(splitted[1])));
+                foreach (var val in edges[origin_node.value]) {
+                    out_list.Add(new Node(){ value = val, predecessor = origin_node});
+                }
+                return out_list; 
             }
         }
 
-        static void inputToGraph(out SimpleGraph graph, uint numberOfUsers, List<(uint, uint)> interconnections)) { //TODO predelat na spojaky
-            graph.numberOfNodes = numberOfUsers;
-            
-            foreach (var i in interconnections) 
-            {
-                graph.edges[i.Item1].Add(i.Item2);
-                graph.edges[i.Item2].Add(i.Item1);
+        class LIFO {
+            public List<Node> queue = new List<Node>();
+
+            public void add(Node node) {
+                queue.Add(node);
+            }
+            public Node removeElement() { 
+                Node node = queue[0];
+                queue.RemoveAt(0);
+
+                return node; 
+            }
+
+            public bool isQueueEmpty() {
+                if (queue.Count() == 0) { 
+                    return true; 
+                } else { 
+                    return false; 
+                }
             }
         }
 
-        static void Main(string[] args)
-        {
-            uint numberOfUsers = 0;
-            List<(uint, uint)> ic = new List<(uint, uint)>();
+        class BFS {
+            public Graph graph;
+            List<int> explored = new List<int>();
+            LIFO queue = new LIFO(){};
+            public int target_value;
 
-            loadInput(out numberOfUsers, out ic);
+            public Node? step(out bool no_result) {
+                no_result = false;
+                if(queue.isQueueEmpty()) { 
+                    no_result = true; 
+                    return null; 
+                }
 
-            Console.WriteLine(numberOfUsers);
+                Node origin_node = queue.removeElement();
+                // Console.Write($"origin: {origin_node.value}");
+                foreach (Node node in graph.adjacement_nodes(origin_node))
+                {
+                    // Console.Write("searching: "); Console.Write($"{node.value}, ");
+                    if(node.value == target_value) {
+                        return node;
+                    } else {
+                        if(!explored.Contains(node.value)) queue.add(node);
+                    }
+                }
 
-            foreach (var i in ic) 
-            {
-                Console.WriteLine($"{i.Item1} - {i.Item2}");
+                explored.Add(origin_node.value);
+
+                // Console.WriteLine();
+                return null;
+            }
+
+            public List<int> backtrack(Node node) {
+                List<int> out_list = new List<int>() { node.value };
+                Node i_node = node;
+
+                while (i_node.predecessor != null) {
+                    out_list.Add(i_node.predecessor.value);
+                    i_node = i_node.predecessor;
+                }
+                return out_list;
+            }
+
+            public void init_queue(Node node) {
+                queue.queue.Add(node);
             }
         }
+
+
+        static void Main(string[] args) {
+            Graph graph = new Graph();
+
+
+
+            int pocetUzivatelu = Int32.Parse(Console.ReadLine());
+            string hrany = Console.ReadLine();
+            string start_cil_raw = Console.ReadLine();
+            int[] start_cil = new int[] { Int32.Parse(start_cil_raw.Split(' ')[0]), Int32.Parse(start_cil_raw.Split(' ')[1]) };
+
+            for (int i = 1; i <= pocetUzivatelu; i++)
+            {
+                graph.edges.Add(i, new List<int> {}); 
+            }
+
+            foreach(string hrana in hrany.Split(' ')) {
+                int[] dvojice = new int[] { Int32.Parse(hrana.Split('-')[0]), Int32.Parse(hrana.Split('-')[1]) };
+
+                graph.edges[dvojice[0]].Add(dvojice[1]);
+                graph.edges[dvojice[1]].Add(dvojice[0]);
+
+            }
+
+
+            // printing out the graph dict
+            // foreach (var kvp in graph.edges)
+            // {
+            //   Console.WriteLine($"{kvp.Key}: {string.Join(", ", kvp.Value)}");
+            // }
+
+            bool no_result = false;
+            Node bfs_result = null;
+            BFS bfs = new BFS() { target_value = start_cil[1], graph = graph };
+            bfs.init_queue(new Node() { value = start_cil[0] });
+            while (bfs_result == null && (!no_result)) {
+                bfs_result = bfs.step(out no_result);
+            }
+
+            Console.WriteLine();
+            if (no_result == true) { Console.Write("neexistuje"); }
+            else {
+                var bfs_backtrack = bfs.backtrack(bfs_result);
+
+                for (int i = bfs_backtrack.Count - 1; i >= 0; i--)
+                {
+                    Console.Write($"{bfs_backtrack[i]} ");
+                }
+                Console.WriteLine();
+            }
+        }
+
     }
 }
-
-
