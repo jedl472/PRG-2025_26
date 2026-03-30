@@ -1,4 +1,4 @@
-﻿namespace MergeSort
+﻿namespace mergesort
 {
     internal class Program
     {
@@ -6,7 +6,7 @@
         {
             Console.WriteLine("Hello, World!");
         }
-}
+    }
 
     public class MergeSortClass
     {
@@ -20,7 +20,15 @@
 
         public static void MergeSort(int[] array, int left, int right)
         {
-            /* TODO: Dopište tělo funkce a otestujte ji (alespoň 3 testy) */
+            if (left < right)
+            {
+                int middle = left + (right - left) / 2;
+
+                MergeSort(array, left, middle);
+                MergeSort(array, middle + 1, right);
+
+                Merge(array, left, middle, right);
+            }
         }
 
 
@@ -28,6 +36,7 @@
         /* Pozn. Testované funkce musí být public, aby byly vidět i v projektu s testy. Po řádném otestování je zrovna zde vhodné, udělat tuto funkci privátní (je to funkce pouze pomocná). */
         public static void Merge(int[] array, int left, int middle, int right)
         {
+            if (array == null) throw new ArgumentNullException();
             // Velikosti dočasných polí
             int n1 = middle - left + 1;
             int n2 = right - middle;
